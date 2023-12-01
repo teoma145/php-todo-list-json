@@ -32,7 +32,7 @@
                             <div class="col-12">
                                 <h1 class="display-1  text-white">Todo List</h1>
                                 <ul class="list-group list-group-flush border border-1 rounded">
-                                    <li v-for="(task,index) in todoList" :key="index" class="list-group-item ">{{task.text}}</li>
+                                    <li v-for="(task,index) in todoList" :key="index" class="list-group-item"  :class="{ 'text-decoration-overline': task.done == true }" @click="DoneTask(index)">{{task.text}}<div class='fs-6 ms-5' @click='RemoveTask(index)'>X</div></li>
                                 </ul>
                             </div>
                         </div>

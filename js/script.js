@@ -11,9 +11,31 @@ createApp({
   methods: {
     readList(){
       axios.get(this.ApiUrl).then((response) => {
-        console.log(response.data)
+        
         this.todoList=response.data;
       })
+    },
+    DoneTask(index){
+      
+      const data = new FormData();
+      data.append("updatetask",index)
+      axios.post(this.ApiUrl, data,).then((response) => {
+        console.log('success')
+        this.todoList= response.data
+        
+      })
+      
+    },
+    RemoveTask(index){
+      
+      const data = new FormData();
+      data.append("removetask",index)
+      axios.post(this.ApiUrl, data,).then((response) => {
+        console.log('success')
+        this.todoList= response.data
+        
+      })
+      
     },
     Addtask(){
       console.log(this.Newtask)
@@ -22,17 +44,14 @@ createApp({
       axios.post(this.ApiUrl, data,).then((response) => {
         console.log('success')
         this.todoList= response.data
+        
       })
-    }
-    //const data ={
-    //task:this.Newtask,
-    //};
-    //axios.post(ApiUrl,data,{
-      //headers:{"Content-Type"}
-    //})
+    },
+ 
   },
 
   mounted() {
     this.readList()
+    
   },
 }).mount("#app");

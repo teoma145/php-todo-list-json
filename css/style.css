@@ -21,3 +21,6 @@ body {
     align-items: center;
     background: #001632;
 }
+.text-decoration-overline {
+    text-decoration: line-through;
+  }
